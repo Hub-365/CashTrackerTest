@@ -17,9 +17,19 @@ async function getExcelColumns(token) {
   return json.value.map(col => col.name);
 }
 
-// 列名に合わせてデータを整形
+// 列名に合わせてデータを整形（大文字小文字無視）
 function mapDataToColumns(columns, data) {
-  return columns.map(colName => data[colName] ?? "");
+  // data のキーを全部小文字化
+  const lowerData = {};
+  for (const key in data) {
+    lowerData[key.toLowerCase()] = data[key];
+  }
+
+  // Excel の列名に合わせて値を並べる
+  return columns.map(colName => {
+    const lowerCol = colName.toLowerCase();
+    return lowerData[lowerCol] ?? "";
+  });
 }
 
 // Excel に行を追加
