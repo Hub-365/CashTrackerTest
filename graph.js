@@ -3,13 +3,6 @@ const excelFile = "Book";
 const excelTable = "t_record";
 const urlBase = `https://graph.microsoft.com/v1.0/me/drive/root:/${excelFolder}/${excelFile}.xlsx:/workbook/tables/${excelTable}`;
 
-async function addRowToExcel(token, data) {
-  const url =
-    
-const excelFolder = "Apps";
-const excelFile = "Book.xlsx";
-const excelTable = "t_record";
-
 // Excel の列名を取得
 async function getExcelColumns(token) {
   const url = `${urlBase}/columns`;
