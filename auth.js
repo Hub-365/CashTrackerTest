@@ -1,5 +1,5 @@
 const clientId = "a2334259-ee0b-447d-a579-fa207d8a3924";
-const redirectUri = "https:///Hub-365.github.io/callback.html";
+const redirectUri = "https://hub-365.github.io/CashTrackerTest/callback.html";
 const scopes = "Files.ReadWrite Sites.ReadWrite.All offline_access";
 
 document.getElementById("loginBtn").onclick = () => {
