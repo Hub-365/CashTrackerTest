@@ -21,5 +21,8 @@ async function addRowToExcel(token, data) {
     body: JSON.stringify(body)
   });
 
-  return res.json();
+  const json = await res.json();
+  console.log("Graph API Response:", json);
+  
+  return json;
 }
