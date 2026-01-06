@@ -1,6 +1,10 @@
+const excelFolder = "Apps";
+const excelFile = "Book";
+const excelTable = "t_record";
+
 async function addRowToExcel(token, data) {
-  const url = "https://graph.microsoft.com/v1.0/me/drive/root:/Apps/Book.xlsx:/workbook/tables/t_record/rows/add
-";
+  const url =
+    `https://graph.microsoft.com/v1.0/me/drive/root:/${excelFolder}/${excelFile}.xlsx:/workbook/tables/${excelTable}/rows/add`;
 
   const body = {
     values: [
