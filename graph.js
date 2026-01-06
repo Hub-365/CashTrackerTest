@@ -1,7 +1,9 @@
 const excelFolder = "Apps";
 const excelFile = "Book";
 const excelTable = "t_record";
-const urlBase = `https://graph.microsoft.com/v1.0/me/drive/root:/${excelFolder}/${excelFile}.xlsx:/workbook/tables/${excelTable}`;
+
+const urlBase =
+  `https://graph.microsoft.com/v1.0/me/drive/root:/${excelFolder}/${excelFile}.xlsx:/workbook/tables/${excelTable}`;
 
 // Excel の列名を取得
 async function getExcelColumns(token) {
@@ -12,7 +14,7 @@ async function getExcelColumns(token) {
   });
 
   const json = await res.json();
-  return json.value.map(col => col.name); // 列名だけ抽出
+  return json.value.map(col => col.name);
 }
 
 // 列名に合わせてデータを整形
