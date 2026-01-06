@@ -28,7 +28,14 @@ function mapDataToColumns(columns, data) {
   // Excel の列名に合わせて値を並べる
   return columns.map(colName => {
     const lowerCol = colName.toLowerCase();
-    return lowerData[lowerCol] ?? "";
+
+    // データがある列 → 値を入れる
+    if (lowerData[lowerCol] !== undefined) {
+      return lowerData[lowerCol];
+    }
+
+    // データが無い列 → null（書き込まない）
+    return null;
   });
 }
 
