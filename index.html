@@ -25,7 +25,8 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     email: e.target.email.value,
     message: e.target.message.value
   };
-
+  
+  alert("送信トライします！");
   await addRowToExcel(token, data);
   alert("送信しました！");
 });
