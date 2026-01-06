@@ -1,5 +1,6 @@
 async function addRowToExcel(token, data) {
-  const url = "https://graph.microsoft.com/v1.0/me/drive/root:/forms/data.xlsx:/workbook/tables/Table1/rows/add";
+  const url = "https://graph.microsoft.com/v1.0/me/drive/root:/Apps/Book.xlsx:/workbook/tables/t_record/rows/add
+";
 
   const body = {
     values: [
