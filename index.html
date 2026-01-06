@@ -1,0 +1,32 @@
+<form id="contactForm">
+  <input name="name" placeholder="名前" required>
+  <input name="email" placeholder="メール" required>
+  <textarea name="message" placeholder="メッセージ" required></textarea>
+  <button>送信</button>
+</form>
+
+<button id="loginBtn">Microsoft でログイン</button>
+
+<script src="auth.js"></script>
+<script src="graph.js"></script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const token = sessionStorage.getItem("ms_token");
+  if (!token) {
+    alert("Microsoft にログインしてください");
+    return;
+  }
+
+  const data = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    message: e.target.message.value
+  };
+
+  await addRowToExcel(token, data);
+  alert("送信しました！");
+});
+</script>
