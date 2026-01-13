@@ -1,0 +1,31 @@
+<div class="block">
+
+  <!-- 削除ボタン（右上） -->
+  <button class="remove-btn" type="button">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+
+  <!-- 日付（横2マス） -->
+  <div class="date-wrapper">
+    <input type="date" class="date-input" required>
+    <button type="button" class="date-picker-btn">
+      <i class="fa-solid fa-calendar-days"></i>
+    </button>
+    <span class="date-display"></span>
+  </div>
+  
+  <!-- Credit -->
+  <select class="credit" required></select>
+
+  <!-- Debit -->
+  <select class="debit" required></select>
+
+  <!-- Amount -->
+  <input type="number" class="amount" min="0" required value="1000">
+
+  <!-- Actual -->
+  <input type="number" class="real" min="0" required placeholder="Real">
+
+  <!-- Note（横2マス） -->
+  <input type="text" class="note" placeholder="Optional">
+</div>

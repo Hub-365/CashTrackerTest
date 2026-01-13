@@ -1,12 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
 <script>
-const projectName = "CashTrackerTest";
+  const hash = new URLSearchParams(location.hash.substring(1));
+  const token = hash.get("access_token");
 
-const hash = window.location.hash.substring(1);
-const params = new URLSearchParams(hash);
-const token = params.get("access_token");
-
-if (token) {
-  sessionStorage.setItem("ms_token", token);
-  window.location.href = `/${projectName}/`;
-}
+  if (token) {
+    sessionStorage.setItem("access_token", token);
+    location.href = "./index.html";
+  } else {
+    document.body.innerHTML = "îFèÿÉGÉâÅ[";
+  }
 </script>
+</body>
+</html>

@@ -1,33 +1,30 @@
-<form id="contactForm">
-  <input name="name" placeholder="名前" required>
-  <input name="email" placeholder="メール" required>
-  <textarea name="message" placeholder="メッセージ" required></textarea>
-  <button>送信</button>
-</form>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CashTracker</title>
 
-<button id="loginBtn">Microsoft でログイン</button>
-
-<script src="auth.js"></script>
-<script src="graph.js"></script>
-
-<script>
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const token = sessionStorage.getItem("ms_token");
-  if (!token) {
-    alert("Microsoft にログインしてください");
-    return;
-  }
-
-  const data = {
-    name: e.target.name.value,
-    email: e.target.email.value,
-    message: e.target.message.value
-  };
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.png">
   
-  alert("送信トライします！");
-  await addRowToExcel(token, data);
-  alert("送信しました！");
-});
-</script>
+  <meta name="theme-color" content="#2c3e50">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <h2>CashTracker</h2>
+
+  <div id="entries"></div>
+
+  <button id="addEntry" class="add-btn" type="button">＋ 追加</button>
+  <button id="submit" type="button">送信</button>
+
+  <script type="module" src="./js/ui.js"></script>
+  <script type="module" src="./js/auth.js"></script>
+  <script type="module" src="./js/graph.js"></script>
+
+</body>
+</html>

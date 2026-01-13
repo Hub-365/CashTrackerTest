@@ -1,0 +1,195 @@
+/* =========================
+   全体レイアウト
+========================= */
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f6fa;
+  color: #2c3e50;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   Card View
+========================= */
+.block {
+  background: #ffffff;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* =========================
+   削除ボタン（右上固定・アイコン中央揃え）
+========================= */
+.remove-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  font-size: 20px;
+  color: #ff4d4d;
+}
+
+.remove-btn:hover {
+  color: #ff0000;
+}
+
+/* =========================
+   日付（横2マス）
+========================= */
+.date-wrapper {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 0;
+}
+
+/* カレンダーアイコン */
+.date-picker-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  font-size: 20px;
+  color: #555;
+}
+
+.date-picker-btn:hover {
+  color: #000;
+}
+
+/* 日付表示 */
+.date-display {
+  font-size: 1rem;
+  color: #2c3e50;
+  line-height: 1;
+  padding: 0.2rem 0;
+  white-space: nowrap;
+}
+
+/* 隠し date input */
+.date-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* =========================
+   入力欄（Debit / Credit / Amount / Actual / Note）
+========================= */
+input, select {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #dcdde1;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.credit { grid-column: 1; }
+.debit { grid-column: 2; }
+.amount { grid-column: 1; }
+.real { grid-column: 2; color: darkgray; }
+.note { grid-column: 1 / span 2; }
+
+.amount, .real { text-align: right; }
+
+/* =========================
+   エラー（赤枠）
+========================= */
+.input-error {
+  border: 2px solid #ff4d4d !important;
+  background: #ffecec !important;
+}
+
+/* =========================
+   ボタン（追加・送信）
+========================= */
+button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: #2c3e50;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #34495e;
+}
+
+.add-btn {
+  background: #27ae60;
+}
+
+.add-btn:hover {
+  background: #2ecc71;
+}
+
+/* =========================
+   スマホ対応
+========================= */
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .block {
+    gap: 10px;
+  }
+
+  .date-wrapper {
+    flex-direction: row;
+  }
+}
+
+
+
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
