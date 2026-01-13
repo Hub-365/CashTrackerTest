@@ -1,7 +1,7 @@
 {
   "name": "cash_tracker",
   "short_name": "CT",
-  "start_url": "/CashTracker/",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2c3e50",
