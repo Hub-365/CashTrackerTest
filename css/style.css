@@ -139,6 +139,12 @@ input, select {
 /* =========================
    ボタン（追加・送信）
 ========================= */
+.btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 button {
   width: 100%;
   padding: 1rem;
@@ -162,6 +168,7 @@ button:hover {
 .add-btn:hover {
   background: #2ecc71;
 }
+
 
 /* =========================
    スマホ対応
