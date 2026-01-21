@@ -1,5 +1,6 @@
 import { setupEntryBlock } from "./ui_setup.js";
 import { submitEntries } from "./graph.js";
+import { ensureLogin } from "./auth.js";
 
 async function loadTemplate() {
   const res = await fetch("./templates/entry.html");
@@ -11,7 +12,6 @@ async function loadTemplate() {
   // link タグをスキップして .block を返す
   return wrapper.querySelector(".block");
 }
-
 
 window.addEventListener("DOMContentLoaded", async () => {
   await addEntryBlock();
@@ -34,26 +34,40 @@ document.getElementById("addEntry").onclick = async () => {
 document.getElementById("submit").addEventListener("click", async () => {
   if (!validateBlocks()) return;
 
-  const blocks = document.querySelectorAll("#entries .block");
-  const rows = [];
+  if (!navigator.onLine) {
+    saveToQueue(data);
+    return;
+  }
 
-  blocks.forEach(block => {
-    rows.push([
-      block.querySelector(".date-input").value,
-      block.querySelector(".credit").value,
-      block.querySelector(".debit").value,
-      Number(block.querySelector(".amount").value),
-      Number(block.querySelector(".real").value),
-      block.querySelector(".note").value
-    ]);
-  });
+  if (!ensureLogin()) {
+    // login() にリダイレクトされるのでここには戻らない
+    return;
+  }
 
-  const ok = await submitEntries(rows);
+  try {
+    const blocks = document.querySelectorAll("#entries .block");
+    const rows = [];
+  
+    blocks.forEach(block => {
+      rows.push([
+        block.querySelector(".date-input").value,
+        block.querySelector(".credit").value,
+        block.querySelector(".debit").value,
+        Number(block.querySelector(".amount").value),
+        Number(block.querySelector(".real").value),
+        block.querySelector(".note").value
+      ]);
+    });
 
-  if (ok) {
-    document.getElementById("entries").innerHTML = "";
-    await addEntryBlock();
-    alert("送信しました");
+    const ok = await submitEntries(rows);
+
+    if (ok) {
+      document.getElementById("entries").innerHTML = "";
+      await addEntryBlock();
+      alert("送信しました");
+    }
+  } catch (e) {
+    saveToQueue(data);
   }
 });
 
